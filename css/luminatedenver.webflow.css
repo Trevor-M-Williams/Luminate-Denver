@@ -254,8 +254,7 @@ h2 {
 }
 
 .nav-link-1 {
-  padding-right: 40px;
-  padding-left: 40px;
+  padding: 0 40px 0 0;
   font-family: Montserrat, sans-serif;
   color: #fff;
   font-size: 14px;
@@ -605,7 +604,7 @@ h2 {
   display: flex;
   width: 50%;
   height: 100%;
-  padding: 5% 5% 5% 10%;
+  padding: 5%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
