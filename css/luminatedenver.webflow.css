@@ -3124,6 +3124,7 @@ h2 {
   }
 
   .get-a-quote-modal-wrapper {
+    display: none !important;
     padding-top: 0vh;
     padding-bottom: 5vh;
     -webkit-box-align: center;
@@ -3219,4 +3220,13 @@ h2 {
     -ms-flex-direction: column;
     flex-direction: column;
   }
+}
+
+#skip-button {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  color: #fff;
+  cursor: pointer;
+  z-index: 100;
 }

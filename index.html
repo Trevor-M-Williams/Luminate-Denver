@@ -108,6 +108,7 @@
     </style>
   </head>
   <body class="body">
+    <div id="skip-button" onclick="handleSkip()">Skip</div>
     <div class="content-wrapper">
       <div
         id="navbar"
@@ -2076,7 +2077,6 @@
             iframe.style.transform = `scale(${frameScale})`;
             iframe.style.top = 42 * frameScale + "px";
             iframe.style.left = 16 * frameScale + "px";
-            console.log(imacWidth);
           }
           window.addEventListener("scroll", () => {
             if (!firstScroll) {
@@ -2143,11 +2143,12 @@
       </div>
       <div class="sketch w-embed w-script">
         <script>
+          let skipClicked = false;
           let elements = [];
           let canvas;
           let svg;
           let contentWrapper;
-          let scale;
+          let animationScale;
           let firework;
           let dataC = [];
           let done = false;
@@ -2166,6 +2167,19 @@
             applyStartCSS();
           }
           function draw() {
+            if (skipClicked) {
+              svgTransformed = true;
+              transformSVG();
+              canvas.remove();
+              applyEndCSS();
+              noLoop();
+              setTimeout(() => {
+                svg.remove();
+                document.body.style.overflowY = "auto";
+                handleBanner();
+              }, 3000);
+            }
+
             if (window.scrollY > 1) window.scrollTo(0, 0);
             background(0, 50);
             firework.update();
@@ -2190,6 +2204,7 @@
                 svg.style.opacity = opacity;
               }
             }
+
             if (particlesRemoved && !svgTransformed) {
               svgTransformed = true;
               setTimeout(() => {
@@ -2210,9 +2225,9 @@
           function applyStartCSS() {
             document.body.style.overflow = "hidden";
             svg = document.querySelector("svg");
-            svg.style.width = xRange * scale;
+            svg.style.width = xRange * animationScale;
             svg.style.top = svgYPos;
-            svg.style.left = width / 2 - (xRange * scale) / 2;
+            svg.style.left = width / 2 - (xRange * animationScale) / 2;
             contentWrapper = document.querySelector(".content-wrapper");
             contentWrapper.style.display = "block";
             let elementClasses = [
@@ -2315,14 +2330,19 @@
             let yRange = yMax - yMin;
             let xc = xRange / 2;
             let yc = yRange / 2;
-            scale = width / 1100;
-            if (width > 1100) scale = 1;
-            svgYPos = height / 2 - (yRange * scale) / 2;
+            animationScale = width / 1100;
+            if (width > 1100) animationScale = 1;
+            svgYPos = height / 2 - (yRange * animationScale) / 2;
             for (let i = 0; i < data.length; i++) {
               let x = data[i][0] - xc - xMin;
               let y = data[i][1] - yc - yMin;
-              dataC[i] = [x * scale, y * scale];
+              dataC[i] = [x * animationScale, y * animationScale];
             }
+          }
+
+          function handleSkip() {
+            skipClicked = true;
+            document.getElementById("skip-button").style.display = "none";
           }
           function transformSVG() {
             let logo = document.querySelector(".brand-logo.wordmark");
@@ -2340,9 +2360,9 @@
             handleBanner(true);
             if (!svgTransformed) {
               resizeCanvas(windowWidth, windowHeight);
-              scale = windowWidth / 1100;
-              if (windowWidth > 1100) scale = 1;
-              svg.style.width = xRange * scale;
+              animationScale = windowWidth / 1100;
+              if (windowWidth > 1100) animationScale = 1;
+              svg.style.width = xRange * animationScale;
               svg.style.top = svgYPos;
               for (let i = 0; i < firework.particles.length; i++) {
                 let p = firework.particles[i];
@@ -2389,7 +2409,8 @@
                 else fill(52, 214, 201);
                 noStroke();
                 if (this.firework) circle(this.pos.x, this.pos.y, 20);
-                else circle(this.pos.x, this.pos.y, radius * scale * 2);
+                else
+                  circle(this.pos.x, this.pos.y, radius * animationScale * 2);
               }
             }
             update() {
