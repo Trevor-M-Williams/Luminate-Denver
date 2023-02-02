@@ -980,9 +980,11 @@
               id="wf-form-Prefooter-Contact-Form"
               name="wf-form-Prefooter-Contact-Form"
               data-name="Prefooter Contact Form"
-              method="get"
+              action="https://formsubmit.co/hello@luminatedenver.com"
+              method="POST"
               class="form"
             >
+            <input type="hidden" name="_captcha" value="false" />
               <label for="Name-3" class="field-label-white">Name</label
               ><input
                 type="text"
@@ -1264,12 +1266,11 @@
           function draw() {
             if (skipClicked) {
               svgTransformed = true;
-              transformSVG();
+              svg.remove();
               canvas.remove();
               applyEndCSS();
               noLoop();
               setTimeout(() => {
-                svg.remove();
                 document.body.style.overflowY = "auto";
                 handleBanner();
               }, 3000);
