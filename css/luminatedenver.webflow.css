@@ -5,7 +5,7 @@
 }
 
 .w-checkbox::before {
-  content: ' ';
+  content: " ";
   display: table;
   -ms-grid-column-span: 1;
   grid-column-end: 2;
@@ -18,7 +18,7 @@
 }
 
 .w-checkbox::after {
-  content: ' ';
+  content: " ";
   display: table;
   -ms-grid-column-span: 1;
   grid-column-end: 2;
@@ -67,7 +67,7 @@
   border-bottom-color: #3898ec;
   border-left-color: #3898ec;
   border-right-color: #3898ec;
-  background-image: url('https://d3e54v103j8qbb.cloudfront.net/static/custom-checkbox-checkmark.589d534424.svg');
+  background-image: url("https://d3e54v103j8qbb.cloudfront.net/static/custom-checkbox-checkmark.589d534424.svg");
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1184,7 +1184,7 @@ h2 {
   max-height: 500px;
   max-width: 600px;
   margin-bottom: 0%;
-  background-image: url('../images/iMac-Pro_Mockup-V2.png');
+  background-image: url("../images/iMac-Pro_Mockup-V2.png");
   background-position: 0px 0px;
   background-size: cover;
 }
@@ -2134,22 +2134,22 @@ h2 {
 }
 
 .field-input::-webkit-input-placeholder {
-  font-family: 'Varela Round', sans-serif;
+  font-family: "Varela Round", sans-serif;
   color: rgba(0, 0, 55, 0.1);
 }
 
 .field-input:-ms-input-placeholder {
-  font-family: 'Varela Round', sans-serif;
+  font-family: "Varela Round", sans-serif;
   color: rgba(0, 0, 55, 0.1);
 }
 
 .field-input::-ms-input-placeholder {
-  font-family: 'Varela Round', sans-serif;
+  font-family: "Varela Round", sans-serif;
   color: rgba(0, 0, 55, 0.1);
 }
 
 .field-input::placeholder {
-  font-family: 'Varela Round', sans-serif;
+  font-family: "Varela Round", sans-serif;
   color: rgba(0, 0, 55, 0.1);
 }
 
@@ -2257,7 +2257,7 @@ h2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: flex;
+  display: none;
   width: 20%;
   height: 100%;
   -webkit-box-align: center;
@@ -3216,4 +3216,3 @@ h2 {
     flex-direction: column;
   }
 }
-
