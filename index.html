@@ -1255,6 +1255,7 @@
           let xRange;
           let particlesRemoved = false;
           let svgTransformed = false;
+
           function setup() {
             canvas = createCanvas(windowWidth, windowHeight);
             canvas.position(0, 0);
@@ -1304,6 +1305,7 @@
             if (particlesRemoved && !svgTransformed) {
               svgTransformed = true;
               setTimeout(() => {
+                document.getElementById("skip-button").style.display = "none";
                 transformSVG();
                 setTimeout(() => {
                   canvas.remove();
