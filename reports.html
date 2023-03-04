@@ -14,11 +14,17 @@
     </style>
   </head>
   <body>
-    <iframe
-      src="https://main.d1exfsca54ao6z.amplifyapp.com/test"
-      frameborder="0"
-      height="100%"
-      width="100%"
-    ></iframe>
+    <iframe frameborder="0" height="100%" width="100%"></iframe>
+
+    <script>
+      setSource();
+
+      function setSource() {
+        let iframe = document.querySelector("iframe");
+        let search = window.location.search;
+        let src = "https://main.d1exfsca54ao6z.amplifyapp.com/" + search;
+        iframe.src = src;
+      }
+    </script>
   </body>
 </html>
